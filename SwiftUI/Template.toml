@@ -1,5 +1,3 @@
 minimumSwiftVersion = "5.5.0"
-
-[platform]
 platforms = ["macOS"]
 minimumMacOSVersion = "11"
