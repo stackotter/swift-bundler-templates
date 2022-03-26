@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "{{TARGET}}",
+    platforms: [.macOS(.v10_15)],
     dependencies: [
         .package(url: "https://github.com/stackotter/swift-cross-ui", branch: "main")
     ],

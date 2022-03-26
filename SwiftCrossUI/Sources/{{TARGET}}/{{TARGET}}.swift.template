@@ -8,9 +8,7 @@ struct {{TARGET}}App: App {
     
     var body: some ViewContent {
         HStack {
-            Button("-") { state.count -= 1 }
-            Text("Count: \(state.count)")
-            Button("+") { state.count += 1 }
+            Text("Hello, world!")
         }
     }
 }

@@ -1,4 +1,4 @@
 [apps.{{TARGET}}]
 product = "{{TARGET}}"
 version = "0.1.0"
-minMacOSVersion = "11"
+minMacOSVersion = "10.15"
