@@ -10,9 +10,9 @@ A valid template must contain a `Template.toml` metadata file in its root direct
 
 If a file or directory contains `{{TARGET}}` in its name, that will get replaced with the new package's name before copying. If a file ends with `.template`, any occurrences of `{{TARGET}}` within its contents will be updated before copying. All other files are copied as is.
 
-### Base
+### Base template
 
-The `Base` folder contains files that are copied into every new project. To override the contents of a file in `Base` for a specific template, just provide the modified version in the template.
+The `Base` folder contains files that are copied into every new project (with the same processing applied as files from a regular template). Note that the `Base` template should not contain a `Template.toml` file. To override the contents of a file in `Base` for a specific template, just provide the modified version in the template.
 
 ## Contributing
 
