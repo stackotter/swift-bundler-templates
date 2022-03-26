@@ -1,10 +1,10 @@
 import SwiftCrossUI
 
 @main
-struct {{TARGET}}App: App {
-    let identifier = "com.example.{{TARGET}}"
+struct {{PACKAGE}}App: App {
+    let identifier = "com.example.{{PACKAGE}}"
     
-    let windowProperties = WindowProperties(title: "{{TARGET}}")
+    let windowProperties = WindowProperties(title: "{{PACKAGE}}")
     
     var body: some ViewContent {
         HStack {

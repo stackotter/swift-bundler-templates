@@ -3,14 +3,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "{{TARGET}}",
+    name: "{{PACKAGE}}",
     platforms: [.macOS(.v10_15)],
     dependencies: [
         .package(url: "https://github.com/stackotter/swift-cross-ui", branch: "main")
     ],
     targets: [
         .executableTarget(
-            name: "{{TARGET}}",
+            name: "{{PACKAGE}}",
             dependencies: [
                 .product(name: "SwiftCrossUI", package: "swift-cross-ui")
             ]
