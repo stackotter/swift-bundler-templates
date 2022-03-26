@@ -5,7 +5,7 @@ struct {{TARGET}}: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(initialWidth: 400, initialHeight: 200)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
