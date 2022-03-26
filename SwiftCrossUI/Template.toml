@@ -1,3 +1,5 @@
-minimumSwiftVersion = "5.5.0"
+description = "A simple 'Hello, World!' SwiftCrossUI app."
+
 platforms = ["macOS", "Linux"]
+minimumSwiftVersion = "5.5"
 minimumMacOSVersion = "11"
