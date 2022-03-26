@@ -1,0 +1,16 @@
+import SwiftCrossUI
+
+@main
+struct {{TARGET}}App: App {
+    let identifier = "com.example.{{TARGET}}"
+    
+    let windowProperties = WindowProperties(title: "{{TARGET}}")
+    
+    var body: some ViewContent {
+        HStack {
+            Button("-") { state.count -= 1 }
+            Text("Count: \(state.count)")
+            Button("+") { state.count += 1 }
+        }
+    }
+}
