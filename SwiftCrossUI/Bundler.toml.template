@@ -1,4 +1,4 @@
 [apps.{{PACKAGE}}]
 product = "{{PACKAGE}}"
 version = "0.1.0"
-minMacOSVersion = "10.15"
+minimumMacOSVersion = "10.15"
