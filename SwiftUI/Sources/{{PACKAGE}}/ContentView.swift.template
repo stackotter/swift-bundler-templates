@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
-            .padding(16)
-    }
+	var body: some View {
+		Text("Hello, World!")
+			.padding(16)
+	}
 }

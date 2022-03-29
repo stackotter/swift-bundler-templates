@@ -3,17 +3,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "{{PACKAGE}}",
-    platforms: [.macOS(.v10_15)],
-    dependencies: [
-        .package(url: "https://github.com/stackotter/swift-cross-ui", branch: "main")
-    ],
-    targets: [
-        .executableTarget(
-            name: "{{PACKAGE}}",
-            dependencies: [
-                .product(name: "SwiftCrossUI", package: "swift-cross-ui")
-            ]
-        ),
-    ]
+	name: "{{PACKAGE}}",
+	platforms: [.macOS(.v10_15)],
+	dependencies: [
+		.package(url: "https://github.com/stackotter/swift-cross-ui", branch: "main")
+	],
+	targets: [
+		.executableTarget(
+			name: "{{PACKAGE}}",
+			dependencies: [
+				.product(name: "SwiftCrossUI", package: "swift-cross-ui")
+			]
+		),
+	]
 )

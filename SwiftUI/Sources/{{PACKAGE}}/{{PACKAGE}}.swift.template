@@ -2,10 +2,10 @@ import SwiftUI
 
 @main
 struct {{PACKAGE}}: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+		}
+	}
 }

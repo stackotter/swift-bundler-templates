@@ -3,13 +3,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "{{PACKAGE}}",
-    platforms: [.macOS(.v11)],
-    dependencies: [],
-    targets: [
-        .executableTarget(
-            name: "{{PACKAGE}}",
-            dependencies: []
-        ),
-    ]
+	name: "{{PACKAGE}}",
+	platforms: [.macOS(.v11)],
+	dependencies: [],
+	targets: [
+		.executableTarget(
+			name: "{{PACKAGE}}",
+			dependencies: []
+		),
+	]
 )

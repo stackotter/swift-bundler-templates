@@ -2,13 +2,13 @@ import SwiftCrossUI
 
 @main
 struct {{PACKAGE}}App: App {
-    let identifier = "com.example.{{PACKAGE}}"
-    
-    let windowProperties = WindowProperties(title: "{{PACKAGE}}")
-    
-    var body: some ViewContent {
-        HStack {
-            Text("Hello, world!")
-        }
-    }
+	let identifier = "com.example.{{PACKAGE}}"
+	
+	let windowProperties = WindowProperties(title: "{{PACKAGE}}")
+	
+	var body: some ViewContent {
+		HStack {
+			Text("Hello, world!")
+		}
+	}
 }
