@@ -8,6 +8,8 @@ This repository houses Swift Bundler's built-in templates.
 
 A valid template must contain a `Template.toml` metadata file in its root directory.
 
+**All indentation must be tabs (not spaces) so that the `create` command's `--indentation` option functions correctly**
+
 If a file or directory contains `{{PACKAGE}}` in its name, that will get replaced with the new package's name before copying. If a file ends with `.template`, any occurrences of `{{PACKAGE}}` within its contents will be updated before copying. All other files are copied as is.
 
 ### Base template
