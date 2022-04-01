@@ -1,3 +1,6 @@
 description = "A simple 'Hello, World!' SwiftCrossUI app."
 platforms = ["macOS", "Linux"]
-minimumSwiftVersion = "5.5"
+minimum_swift_version = "5.5"
+
+[system_dependencies.gtk3]
+brew = "gtk+3"
