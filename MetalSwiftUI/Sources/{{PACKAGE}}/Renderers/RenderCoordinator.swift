@@ -16,17 +16,16 @@ enum RenderCoordinatorError: LocalizedError {
 }
 
 final class RenderCoordinator<R: Renderer>: NSObject, MTKViewDelegate {
-	var context: Context
 	var device: MTLDevice
 	var commandQueue: MTLCommandQueue
 	var renderer: R
+	var errorHandler: (String) -> Void
 
-	struct Context {
-		var errorHandler: (String) -> Void
-		var rendererType: R.Type
-	}
-
-	required init(_ context: Context) throws {
+	required init(
+		rendererType: R.Type,
+		rendererContext: R.Context,
+		errorHandler: @escaping (String) -> Void
+	) throws {
 		// Get Metal device
 		guard let device = MTLCreateSystemDefaultDevice() else {
 			throw RenderCoordinatorError.failedToGetMetalDevice
@@ -37,11 +36,11 @@ final class RenderCoordinator<R: Renderer>: NSObject, MTKViewDelegate {
 			throw RenderCoordinatorError.failedToCreateRenderCommandQueue
 		}
 		
-		self.context = context
 		self.device = device
 		self.commandQueue = commandQueue
+		self.errorHandler = errorHandler
 
-		renderer = try context.rendererType.init(device: device, commandQueue: commandQueue)
+		renderer = try rendererType.init(context: rendererContext, device: device, commandQueue: commandQueue)
 
 		super.init()
 	}
@@ -49,19 +48,19 @@ final class RenderCoordinator<R: Renderer>: NSObject, MTKViewDelegate {
 	func draw(in view: MTKView) {
 		// Get render pass descriptor
 		guard let renderPassDescriptor = view.currentRenderPassDescriptor else {
-			context.errorHandler("Failed to get the current render pass descriptor")
+			errorHandler("Failed to get the current render pass descriptor")
 			return
 		}
 		
 		// Create command buffer
 		guard let commandBuffer = commandQueue.makeCommandBuffer() else {
-			context.errorHandler("Failed to create command buffer")
+			errorHandler("Failed to create command buffer")
 			return
 		}
 		
 		// Create render encoder
 		guard let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else {
-			context.errorHandler("Failed to create render encoder")
+			errorHandler("Failed to create render encoder")
 			return
 		}
 		
@@ -69,13 +68,13 @@ final class RenderCoordinator<R: Renderer>: NSObject, MTKViewDelegate {
 		do {
 			try renderer.encodeFrame(into: renderEncoder)
 		} catch {
-			context.errorHandler("Failed to encode frame: \(error)")
+			errorHandler("Failed to encode frame: \(error)")
 			return
 		}
 		
 		// Get the current drawable
 		guard let drawable = view.currentDrawable else {
-			context.errorHandler("Failed to get current drawable")
+			errorHandler("Failed to get current drawable")
 			return
 		}
 		

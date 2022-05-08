@@ -5,12 +5,13 @@ import SwiftUI
 final class MetalView<T: Renderer>: NSViewRepresentable {
 	var renderCoordinator: RenderCoordinator<T>?
 	
-	init(rendererType: T.Type, errorHandler: @escaping (String) -> Void) {
+	init(rendererType: T.Type, rendererContext: T.Context, errorHandler: @escaping (String) -> Void) {
 		do {
-			self.renderCoordinator = try RenderCoordinator(.init(
-				errorHandler: { errorHandler($0) },
-				rendererType: rendererType
-			))
+			self.renderCoordinator = try RenderCoordinator(
+				rendererType: rendererType,
+				rendererContext: rendererContext,
+				errorHandler: { errorHandler($0) }
+			)
 		} catch {
 			errorHandler("Failed to initialize RenderCoordinator: \(error)")
 		}
@@ -36,4 +37,10 @@ final class MetalView<T: Renderer>: NSViewRepresentable {
 	}
 	
 	func updateNSView(_ view: NSViewType, context: Context) {}
+}
+
+extension MetalView where T.Context == Void {
+	convenience init(rendererType: T.Type, errorHandler: @escaping (String) -> Void) {
+		self.init(rendererType: rendererType, rendererContext: Void(), errorHandler: errorHandler)
+	}
 }

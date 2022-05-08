@@ -30,7 +30,7 @@ struct TriangleRenderer: Renderer {
 
 	var pipelineState: MTLRenderPipelineState
 
-	init(device: MTLDevice, commandQueue: MTLCommandQueue) throws {
+	init(context: Void, device: MTLDevice, commandQueue: MTLCommandQueue) throws {
 		// Create vertex buffer
 		guard let vertexBuffer = device.makeBuffer(
 			bytes: &vertices,

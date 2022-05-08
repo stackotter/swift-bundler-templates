@@ -1,7 +1,9 @@
 import MetalKit
 
 protocol Renderer {
-	init(device: MTLDevice, commandQueue: MTLCommandQueue) throws
+	associatedtype Context
+
+	init(context: Context, device: MTLDevice, commandQueue: MTLCommandQueue) throws
 
 	func encodeFrame(into encoder: MTLRenderCommandEncoder) throws
 }
