@@ -1,67 +1,67 @@
 import Metal
 
 enum MetalUtilError: LocalizedError {
-  case failedToCreateRenderPipelineState(Error)
-  case failedToLoadDefaultLibrary(Error?)
-  case failedToLoadShaderFunction(name: String)
+	case failedToCreateRenderPipelineState(Error)
+	case failedToLoadDefaultLibrary(Error?)
+	case failedToLoadShaderFunction(name: String)
 
-  var errorDescription: String? {
-    switch self {
-    case .failedToCreateRenderPipelineState(let error):
-      return "Failed to create render pipeline state: \(error)"
-    case .failedToLoadDefaultLibrary(let error):
-      return "Failed to create default Metal library: \(error?.localizedDescription ?? "Unknown error")"
-    case .failedToLoadShaderFunction(let name):
-      return "Failed to load shader function '\(name)'"
-    }
-  }
+	var errorDescription: String? {
+		switch self {
+		case .failedToCreateRenderPipelineState(let error):
+			return "Failed to create render pipeline state: \(error)"
+		case .failedToLoadDefaultLibrary(let error):
+			return "Failed to create default Metal library: \(error?.localizedDescription ?? "Unknown error")"
+		case .failedToLoadShaderFunction(let name):
+			return "Failed to load shader function '\(name)'"
+		}
+	}
 }
 
 enum MetalUtil {
-  /// Makes a render pipeline state with the given properties.
-  static func makeRenderPipelineState(
-    device: MTLDevice,
-    label: String,
-    vertexFunction: MTLFunction,
-    fragmentFunction: MTLFunction
-  ) throws -> MTLRenderPipelineState {
-    let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
-    pipelineStateDescriptor.label = label
-    pipelineStateDescriptor.vertexFunction = vertexFunction
-    pipelineStateDescriptor.fragmentFunction = fragmentFunction
-    pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-    
-    do {
-      return try device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
-    } catch {
-      throw MetalUtilError.failedToCreateRenderPipelineState(error)
-    }
-  }
-  
-  /// Loads the default metal library from the app bundle.
-  static func loadDefaultLibrary(_ device: MTLDevice) throws -> MTLLibrary {
-    let bundlePath = "Contents/Resources/{{PACKAGE}}_{{PACKAGE}}.bundle"
-    guard let bundle = Bundle(url: Bundle.main.bundleURL.appendingPathComponent(bundlePath)) else {
-      throw MetalUtilError.failedToLoadDefaultLibrary(nil)
-    }
-    
-    guard let libraryURL = bundle.url(forResource: "default", withExtension: "metallib") else {
-      throw MetalUtilError.failedToLoadDefaultLibrary(nil)
-    }
-    
-    do {
-      return try device.makeLibrary(URL: libraryURL)
-    } catch {
-      throw MetalUtilError.failedToLoadDefaultLibrary(error)
-    }
-  }
-  
-  /// Loads a metal function from the given library.
-  static func loadFunction(_ name: String, from library: MTLLibrary) throws -> MTLFunction {
-    guard let function = library.makeFunction(name: name) else {
-      throw MetalUtilError.failedToLoadShaderFunction(name: name)
-    }
-    
-    return function
-  }
+	/// Makes a render pipeline state with the given properties.
+	static func makeRenderPipelineState(
+		device: MTLDevice,
+		label: String,
+		vertexFunction: MTLFunction,
+		fragmentFunction: MTLFunction
+	) throws -> MTLRenderPipelineState {
+		let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
+		pipelineStateDescriptor.label = label
+		pipelineStateDescriptor.vertexFunction = vertexFunction
+		pipelineStateDescriptor.fragmentFunction = fragmentFunction
+		pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+		
+		do {
+			return try device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+		} catch {
+			throw MetalUtilError.failedToCreateRenderPipelineState(error)
+		}
+	}
+	
+	/// Loads the default metal library from the app bundle.
+	static func loadDefaultLibrary(_ device: MTLDevice) throws -> MTLLibrary {
+		let bundlePath = "Contents/Resources/{{PACKAGE}}_{{PACKAGE}}.bundle"
+		guard let bundle = Bundle(url: Bundle.main.bundleURL.appendingPathComponent(bundlePath)) else {
+			throw MetalUtilError.failedToLoadDefaultLibrary(nil)
+		}
+		
+		guard let libraryURL = bundle.url(forResource: "default", withExtension: "metallib") else {
+			throw MetalUtilError.failedToLoadDefaultLibrary(nil)
+		}
+		
+		do {
+			return try device.makeLibrary(URL: libraryURL)
+		} catch {
+			throw MetalUtilError.failedToLoadDefaultLibrary(error)
+		}
+	}
+	
+	/// Loads a metal function from the given library.
+	static func loadFunction(_ name: String, from library: MTLLibrary) throws -> MTLFunction {
+		guard let function = library.makeFunction(name: name) else {
+			throw MetalUtilError.failedToLoadShaderFunction(name: name)
+		}
+		
+		return function
+	}
 }

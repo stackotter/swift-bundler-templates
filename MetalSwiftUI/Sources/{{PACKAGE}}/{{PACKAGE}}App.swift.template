@@ -2,10 +2,10 @@ import SwiftUI
 
 @main
 struct {{PACKAGE}}App: App {
-  var body: some Scene {
-    WindowGroup {
-      TriangleView()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-  }
+	var body: some Scene {
+		WindowGroup {
+			TriangleView()
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+		}
+	}
 }
