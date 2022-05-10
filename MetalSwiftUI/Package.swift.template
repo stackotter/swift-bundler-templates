@@ -3,14 +3,14 @@
 import PackageDescription
 
 let package = Package(
-		name: "{{PACKAGE}}",
-		platforms: [.macOS(.v11)],
-		dependencies: [],
-		targets: [
-				.executableTarget(
-						name: "{{PACKAGE}}",
-						dependencies: [],
-						resources: [.process("Renderers/Shaders")]
-				),
-		]
+	name: "{{PACKAGE}}",
+	platforms: [.macOS(.v11)],
+	dependencies: [],
+	targets: [
+		.executableTarget(
+			name: "{{PACKAGE}}",
+			dependencies: [],
+			resources: [.process("Renderers/Shaders")]
+		),
+	]
 )
