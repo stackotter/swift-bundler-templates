@@ -2,7 +2,7 @@ import SwiftCrossUI
 
 @main
 struct {{PACKAGE}}App: App {
-	let identifier = "com.example.{{PACKAGE}}"
+	let identifier = "{{IDENTIFIER}}"
 	
 	let windowProperties = WindowProperties(title: "{{PACKAGE}}")
 	
