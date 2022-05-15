@@ -1,4 +1,5 @@
 [apps.{{PACKAGE}}]
+identifier = "{{IDENTIFIER}}"
 product = "{{PACKAGE}}"
 version = "0.1.0"
 minimum_macos_version = "10.15"
