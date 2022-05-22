@@ -10,7 +10,7 @@ let package = Package(
 		.executableTarget(
 			name: "{{PACKAGE}}",
 			dependencies: [],
-			resources: [.process("Renderers/Shaders")]
+			resources: [.copy("Renderers/Shaders")]
 		)
 	]
 )
