@@ -2,9 +2,9 @@ import Foundation
 import MetalKit
 import SwiftUI
 
-final class MetalView<T: Renderer>: NSViewRepresentable {
+final class MetalView<T: Renderer> {
 	var renderCoordinator: RenderCoordinator<T>?
-	
+
 	init(rendererType: T.Type, rendererContext: T.Context, errorHandler: @escaping (String) -> Void) {
 		do {
 			self.renderCoordinator = try RenderCoordinator(
@@ -16,12 +16,12 @@ final class MetalView<T: Renderer>: NSViewRepresentable {
 			errorHandler("Failed to initialize RenderCoordinator: \(error)")
 		}
 	}
-	
+
 	func makeCoordinator() -> RenderCoordinator<T>? {
 		return renderCoordinator
 	}
-	
-	func makeNSView(context: Context) -> some NSView {
+
+	func makeMTKView(context: Context) -> MTKView {
 		let mtkView = MTKView()
 		
 		if let metalDevice = MTLCreateSystemDefaultDevice() {
@@ -35,9 +35,27 @@ final class MetalView<T: Renderer>: NSViewRepresentable {
 
 		return mtkView
 	}
+}
+
+#if os(macOS)
+extension MetalView: NSViewRepresentable {
+	func makeNSView(context: Context) -> some NSView {
+		return makeMTKView(context: context)
+	}
 	
 	func updateNSView(_ view: NSViewType, context: Context) {}
 }
+#endif
+
+#if os(iOS)
+extension MetalView: UIViewRepresentable {
+	func makeUIView(context: Context) -> some UIView {
+		return makeMTKView(context: context)
+	}
+	
+	func updateUIView(_ view: UIViewType, context: Context) {}
+}
+#endif
 
 extension MetalView where T.Context == Void {
 	convenience init(rendererType: T.Type, errorHandler: @escaping (String) -> Void) {

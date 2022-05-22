@@ -6,6 +6,7 @@ struct {{PACKAGE}}App: App {
 		WindowGroup {
 			TriangleView()
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.ignoresSafeArea()
 		}
 	}
 }

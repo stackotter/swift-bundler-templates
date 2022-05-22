@@ -20,7 +20,7 @@ struct TriangleView: View {
 			MetalView(
 				rendererType: TriangleRenderer.self,
 				errorHandler: model.handleError(_:)
-			)
+			).aspectRatio(1, contentMode: .fit)
 		}
 	}
 }

@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
 	name: "{{PACKAGE}}",
-	platforms: [.macOS(.v11)],
+	platforms: [.macOS(.v11), .iOS(.v15)],
 	dependencies: [],
 	targets: [
 		.executableTarget(
