@@ -2,15 +2,15 @@ import Metal
 
 enum MetalUtilError: LocalizedError {
 	case failedToCreateRenderPipelineState(Error)
-	case failedToLoadDefaultLibrary(Error?)
+	case failedToLoadDefaultLibrary
 	case failedToLoadShaderFunction(name: String)
 
 	var errorDescription: String? {
 		switch self {
 		case .failedToCreateRenderPipelineState(let error):
 			return "Failed to create render pipeline state: \(error)"
-		case .failedToLoadDefaultLibrary(let error):
-			return "Failed to create default Metal library: \(error?.localizedDescription ?? "Unknown error")"
+		case .failedToLoadDefaultLibrary:
+			return "Failed to create default Metal library: Unknown cause"
 		case .failedToLoadShaderFunction(let name):
 			return "Failed to load shader function '\(name)'"
 		}
@@ -40,20 +40,11 @@ enum MetalUtil {
 	
 	/// Loads the default metal library from the app bundle.
 	static func loadDefaultLibrary(_ device: MTLDevice) throws -> MTLLibrary {
-		let bundlePath = "Contents/Resources/{{PACKAGE}}_{{PACKAGE}}.bundle"
-		guard let bundle = Bundle(url: Bundle.main.bundleURL.appendingPathComponent(bundlePath)) else {
-			throw MetalUtilError.failedToLoadDefaultLibrary(nil)
+		guard let library = device.makeDefaultLibrary() else {
+			throw MetalUtilError.failedToLoadDefaultLibrary
 		}
-		
-		guard let libraryURL = bundle.url(forResource: "default", withExtension: "metallib") else {
-			throw MetalUtilError.failedToLoadDefaultLibrary(nil)
-		}
-		
-		do {
-			return try device.makeLibrary(URL: libraryURL)
-		} catch {
-			throw MetalUtilError.failedToLoadDefaultLibrary(error)
-		}
+
+		return library
 	}
 	
 	/// Loads a metal function from the given library.
