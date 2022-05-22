@@ -14,6 +14,6 @@ let package = Package(
 			dependencies: [
 				.product(name: "SwiftCrossUI", package: "swift-cross-ui")
 			]
-		),
+		)
 	]
 )

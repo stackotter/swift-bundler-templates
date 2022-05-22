@@ -11,6 +11,6 @@ let package = Package(
 			name: "{{PACKAGE}}",
 			dependencies: [],
 			resources: [.process("Renderers/Shaders")]
-		),
+		)
 	]
 )
