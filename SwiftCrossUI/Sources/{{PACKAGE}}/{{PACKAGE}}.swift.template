@@ -2,10 +2,12 @@ import SwiftCrossUI
 
 @main
 struct {{PACKAGE}}App: App {
+	typealias Backend = GtkBackend
+
 	let identifier = "{{IDENTIFIER}}"
 	
 	let windowProperties = WindowProperties(title: "{{PACKAGE}}")
-	
+
 	var body: some ViewContent {
 		HStack {
 			Text("Hello, world!")
