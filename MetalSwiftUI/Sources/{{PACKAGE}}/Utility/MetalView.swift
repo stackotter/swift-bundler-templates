@@ -4,10 +4,10 @@ import SwiftUI
 
 struct MetalView<T: Renderer>: NSViewRepresentable {
 	var renderCoordinator: RenderCoordinator<T>?
-
+	
 	init(rendererType: T.Type, rendererContext: T.Context, errorHandler: @escaping (String) -> Void) {
 		do {
-			renderCoordinator = try RenderCoordinator(
+			self.renderCoordinator = try RenderCoordinator(
 				rendererType: rendererType,
 				rendererContext: rendererContext,
 				errorHandler: { errorHandler($0) }
@@ -16,14 +16,14 @@ struct MetalView<T: Renderer>: NSViewRepresentable {
 			errorHandler("Failed to initialize RenderCoordinator: \(error)")
 		}
 	}
-
+	
 	func makeCoordinator() -> RenderCoordinator<T>? {
 		return renderCoordinator
 	}
-
+	
 	func makeNSView(context: Context) -> some NSView {
 		let mtkView = MTKView()
-
+		
 		if let metalDevice = MTLCreateSystemDefaultDevice() {
 			mtkView.device = metalDevice
 		}
@@ -35,12 +35,12 @@ struct MetalView<T: Renderer>: NSViewRepresentable {
 
 		return mtkView
 	}
-
-	func updateNSView(_: NSViewType, context _: Context) {}
+	
+	func updateNSView(_ view: NSViewType, context: Context) {}
 }
 
 extension MetalView where T.Context == Void {
 	init(rendererType: T.Type, errorHandler: @escaping (String) -> Void) {
-		self.init(rendererType: rendererType, rendererContext: (), errorHandler: errorHandler)
+		self.init(rendererType: rendererType, rendererContext: Void(), errorHandler: errorHandler)
 	}
 }
