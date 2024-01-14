@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "swift-bundler bundle debug",
+      "type": "shell",
+      "command": "swift bundler bundle -c debug"
+    },
+    {
+      "label": "swift-bundler bundle release",
+      "type": "shell",
+      "command": "swift bundler bundle -c release"
+    }
+  ]
+}

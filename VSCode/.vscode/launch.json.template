@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": ["swift"],
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "name": "Debug",
+      "program": "${workspaceFolder}/.build/bundler/{{PACKAGE}}.App",
+      "preLaunchTask": "swift-bundler bundle debug"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": ["swift"],
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "name": "Release",
+      "program": "${workspaceFolder}/.build/bundler/{{PACKAGE}}.App",
+      "preLaunchTask": "swift-bundler bundle release"
+    }
+  ]
+}
