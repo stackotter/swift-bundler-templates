@@ -17,10 +17,17 @@ struct TriangleView: View {
 		if let error = model.error {
 			Text(error)
 		} else {
-			MetalView(
-				rendererType: TriangleRenderer.self,
-				errorHandler: model.handleError(_:)
-			).aspectRatio(1, contentMode: .fit)
+			if #available(macOS 13, iOS 16, *) {
+				MetalView(
+					rendererType: TriangleRenderer.self,
+					errorHandler: model.handleError(_:)
+				).aspectRatio(1, contentMode: .fit)
+			} else {
+				MetalViewClass(
+					rendererType: TriangleRenderer.self,
+					errorHandler: model.handleError(_:)
+				).aspectRatio(1, contentMode: .fit)
+			}
 		}
 	}
 }
