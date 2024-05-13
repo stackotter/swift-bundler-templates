@@ -1,0 +1,14 @@
+import SwiftCrossUI
+import GtkBackend
+
+@main
+struct {{PACKAGE}}App: App {
+	let identifier = "{{IDENTIFIER}}"
+
+	var body: some Scene {
+		WindowGroup("{{PACKAGE}}") {
+			Text("Hello, World!")
+				.padding(10)
+		}
+	}
+}
