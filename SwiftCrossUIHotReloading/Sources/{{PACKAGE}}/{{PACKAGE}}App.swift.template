@@ -28,6 +28,7 @@ struct CounterView: View {
 				}
 			}
 		}
+		.padding(10)
 	}
 }
 
