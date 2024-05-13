@@ -14,7 +14,7 @@ class CounterState: Observable, Codable {
 }
 
 struct CounterView: View {
-	let state = CounterState()
+	var state = CounterState()
 
 	var body: some View {
 		VStack {
