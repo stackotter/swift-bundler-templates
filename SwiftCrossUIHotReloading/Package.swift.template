@@ -6,8 +6,8 @@ let package = Package(
 	name: "{{PACKAGE}}",
 	platforms: [.macOS(.v10_15)],
 	dependencies: [
-		.package(url: "https://github.com/stackotter/swift-bundler", revision: "263c3ec9bdb1929be2ac078e72b8f4fb181e1d4f"),
-		.package(url: "https://github.com/stackotter/swift-cross-ui", branch: "698161f6af0b35c7181b00108e6803ce93fa4867"),
+		.package(url: "https://github.com/stackotter/swift-bundler", revision: "5ba9c04744efd3815ba5578193c3cfa9a011bee3"),
+		.package(url: "https://github.com/stackotter/swift-cross-ui", branch: "174f8e26ae04c2223ad80b7de42d76d5c5397c46"),
 	],
 	targets: [
 		.executableTarget(

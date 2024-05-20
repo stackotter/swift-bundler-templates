@@ -6,14 +6,14 @@ let package = Package(
 	name: "{{PACKAGE}}",
 	platforms: [.macOS(.v10_15)],
 	dependencies: [
-		.package(url: "https://github.com/stackotter/swift-cross-ui", branch: "698161f6af0b35c7181b00108e6803ce93fa4867")
+		.package(url: "https://github.com/stackotter/swift-cross-ui", branch: "174f8e26ae04c2223ad80b7de42d76d5c5397c46")
 	],
 	targets: [
 		.executableTarget(
 			name: "{{PACKAGE}}",
 			dependencies: [
 				.product(name: "SwiftCrossUI", package: "swift-cross-ui"),
-				.product(name: "GtkBackend", package: "swift-cross-ui")
+				.product(name: "DefaultBackend", package: "swift-cross-ui")
 			]
 		)
 	]

@@ -44,7 +44,9 @@ struct {{PACKAGE}}App: App {
 			// #hotReloadable should be applied to the root view of each scene, but can
 			// technically be applied to any view within the {{Package}}App struct (must
 			// be visible to the @HotReloadable macro).
-			#hotReloadable(CounterView())
+			#hotReloadable {
+				CounterView()
+			}
 		}
 	}
 }

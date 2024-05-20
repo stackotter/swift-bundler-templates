@@ -1,0 +1,79 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "OpenCombine",
+        "repositoryURL": "https://github.com/OpenCombine/OpenCombine.git",
+        "state": {
+          "branch": null,
+          "revision": "8576f0d579b27020beccbccc3ea6844f3ddfc2c2",
+          "version": "0.14.0"
+        }
+      },
+      {
+        "package": "Qlift",
+        "repositoryURL": "https://github.com/Longhanks/qlift",
+        "state": {
+          "branch": null,
+          "revision": "ddab1f1ecc113ad4f8e05d2999c2734cdf706210",
+          "version": null
+        }
+      },
+      {
+        "package": "swift-cross-ui",
+        "repositoryURL": "https://github.com/stackotter/swift-cross-ui",
+        "state": {
+          "branch": null,
+          "revision": "174f8e26ae04c2223ad80b7de42d76d5c5397c46",
+          "version": null
+        }
+      },
+      {
+        "package": "swift-macro-toolkit",
+        "repositoryURL": "https://github.com/stackotter/swift-macro-toolkit",
+        "state": {
+          "branch": null,
+          "revision": "687075e7bf976e121d083e922a07c7a9350ca85d",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "swift-syntax",
+        "repositoryURL": "https://github.com/apple/swift-syntax.git",
+        "state": {
+          "branch": null,
+          "revision": "303e5c5c36d6a558407d364878df131c3546fad8",
+          "version": "510.0.2"
+        }
+      },
+      {
+        "package": "SwiftTerm",
+        "repositoryURL": "https://github.com/migueldeicaza/SwiftTerm.git",
+        "state": {
+          "branch": null,
+          "revision": "e2b431dbf73f775fb4807a33e4572ffd3dc6933a",
+          "version": "1.2.5"
+        }
+      },
+      {
+        "package": "TermKit",
+        "repositoryURL": "https://github.com/stackotter/TermKit",
+        "state": {
+          "branch": null,
+          "revision": "163afa64f1257a0c026cc83ed8bc47a5f8fc9704",
+          "version": null
+        }
+      },
+      {
+        "package": "TextBufferKit",
+        "repositoryURL": "https://github.com/migueldeicaza/TextBufferKit.git",
+        "state": {
+          "branch": null,
+          "revision": "7f3ed5b1d7288de34ad853544d802647be11cfcf",
+          "version": "0.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

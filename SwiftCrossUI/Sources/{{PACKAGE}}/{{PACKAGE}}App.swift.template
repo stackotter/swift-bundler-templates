@@ -1,5 +1,5 @@
 import SwiftCrossUI
-import GtkBackend
+import DefaultBackend
 
 @main
 struct {{PACKAGE}}App: App {
