@@ -1,4 +1,4 @@
-// swift-tools-version: 5.5
+// swift-tools-version: 5.10
 
 import PackageDescription
 
@@ -6,7 +6,10 @@ let package = Package(
 	name: "{{PACKAGE}}",
 	platforms: [.macOS(.v10_15)],
 	dependencies: [
-		.package(url: "https://github.com/stackotter/swift-cross-ui", branch: "174f8e26ae04c2223ad80b7de42d76d5c5397c46")
+		.package(
+			url: "https://github.com/stackotter/swift-cross-ui",
+			branch: "827bb4b7460ab2bf644f50936b8385ecb3a84c21"
+		)
 	],
 	targets: [
 		.executableTarget(
