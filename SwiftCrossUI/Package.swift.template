@@ -4,11 +4,11 @@ import PackageDescription
 
 let package = Package(
 	name: "{{PACKAGE}}",
-	platforms: [.macOS(.v10_15)],
+	platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .macCatalyst(.v13)],
 	dependencies: [
 		.package(
 			url: "https://github.com/stackotter/swift-cross-ui",
-			branch: "827bb4b7460ab2bf644f50936b8385ecb3a84c21"
+			revision: "8416e83ed33e78fda49442d808194adb1627dc87"
 		)
 	],
 	targets: [
