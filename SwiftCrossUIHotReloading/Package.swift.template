@@ -4,10 +4,16 @@ import PackageDescription
 
 let package = Package(
 	name: "{{PACKAGE}}",
-	platforms: [.macOS(.v10_15)],
+	platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .macCatalyst(.v13)],
 	dependencies: [
-		.package(url: "https://github.com/stackotter/swift-bundler", revision: "5ba9c04744efd3815ba5578193c3cfa9a011bee3"),
-		.package(url: "https://github.com/stackotter/swift-cross-ui", branch: "174f8e26ae04c2223ad80b7de42d76d5c5397c46"),
+		.package(
+			url: "https://github.com/stackotter/swift-bundler",
+			revision: "7a3ee20eaeb3cf1aa1f0a9a056c01c9c4ccb6e2a"
+		),
+		.package(
+			url: "https://github.com/stackotter/swift-cross-ui",
+			revision: "8416e83ed33e78fda49442d808194adb1627dc87"
+		)
 	],
 	targets: [
 		.executableTarget(

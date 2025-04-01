@@ -1,43 +1,13 @@
-// Hot reloading works with both GtkBackend and AppKitBackend. The following
-// command lets you override the default backend;
-//   SCUI_DEFAULT_BACKEND=GtkBackend swift bundler run --hot
 import DefaultBackend
-import SwiftBundlerRuntime  // Required by the expansion of @HotReloadable
+import SwiftBundlerRuntime
 import SwiftCrossUI
 
-// At the moment state must be Codable to get persisted across hot reloads. If
-// not Codable, it simply gets reset back to default on reloads. Codable has
-// the added benefit of allowing you to shuffle around and remove fields while
-// still having state persist across hot reloads.
-class CounterState: Observable, Codable {
-	@Observed var count = 0
-}
-
-struct CounterView: View {
-	var state = CounterState()
-
-	var body: some View {
-		VStack {
-			Text("Count: \(state.count)")
-			HStack {
-				Button("Decrease") {
-					state.count -= 1
-				}
-				Button("Increase") {
-					state.count += 1
-				}
-			}
-		}
-		.padding(10)
-	}
-}
-
-// Top-level @HotReloadable required to setup dylib entrypoints and hot reloading
-// server connections.
+// Top-level @HotReloadable sets up dylib entrypoints and hot reloading
+// server connection.
 @main
 @HotReloadable
 struct {{PACKAGE}}App: App {
-	let identifier = "{{IDENTIFIER}}"
+	@State var count = 0
 
 	var body: some Scene {
 		WindowGroup("{{PACKAGE}}") {
@@ -45,7 +15,17 @@ struct {{PACKAGE}}App: App {
 			// technically be applied to any view within the {{Package}}App struct (must
 			// be visible to the @HotReloadable macro).
 			#hotReloadable {
-				CounterView()
+				VStack {
+					Text("Count: \(count)")
+					HStack {
+						Button("Decrease") {
+							count -= 1
+						}
+						Button("Increase") {
+							count += 1
+						}
+					}
+				}.padding()
 			}
 		}
 	}
