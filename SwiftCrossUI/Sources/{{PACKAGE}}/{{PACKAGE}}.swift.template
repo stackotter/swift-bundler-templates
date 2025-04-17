@@ -1,14 +1,12 @@
 import SwiftCrossUI
+import DefaultBackend
 
 @main
 struct {{PACKAGE}}App: App {
-	let identifier = "com.example.{{PACKAGE}}"
-	
-	let windowProperties = WindowProperties(title: "{{PACKAGE}}")
-	
-	var body: some ViewContent {
-		HStack {
-			Text("Hello, world!")
+	var body: some Scene {
+		WindowGroup("{{PACKAGE}}") {
+			Text("Hello, World!")
+				.padding()
 		}
 	}
 }
