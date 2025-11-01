@@ -8,7 +8,7 @@ let package = Package(
 	dependencies: [
 		.package(
 			url: "https://github.com/stackotter/swift-cross-ui",
-			revision: "684b714410155223b9f54ca9d74867406c70009d"
+			revision: "734b5dfd2377e7c02faf55c96c2227d693c07ecc"
 		)
 	],
 	targets: [
