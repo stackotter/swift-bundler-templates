@@ -7,8 +7,8 @@ let package = Package(
 	platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .macCatalyst(.v13)],
 	dependencies: [
 		.package(
-			url: "https://github.com/stackotter/swift-cross-ui",
-			revision: "734b5dfd2377e7c02faf55c96c2227d693c07ecc"
+			url: "https://github.com/moreSwift/swift-cross-ui",
+			revision: "844085ab10485dbe63ad87effd473ca3124d2e2f"
 		)
 	],
 	targets: [

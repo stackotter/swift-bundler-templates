@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
 
@@ -7,12 +7,12 @@ let package = Package(
 	platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .macCatalyst(.v13)],
 	dependencies: [
 		.package(
-			url: "https://github.com/stackotter/swift-bundler",
-			revision: "4328ee894bf022e7ea973245928be0cb51ba45a0"
+			url: "https://github.com/moreSwift/swift-bundler",
+			revision: "002218e6e310c4f179859710ae98179fec485e04"
 		),
 		.package(
-			url: "https://github.com/stackotter/swift-cross-ui",
-			revision: "8416e83ed33e78fda49442d808194adb1627dc87"
+			url: "https://github.com/moreSwift/swift-cross-ui",
+			revision: "844085ab10485dbe63ad87effd473ca3124d2e2f"
 		)
 	],
 	targets: [
