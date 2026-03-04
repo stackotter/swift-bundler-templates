@@ -12,8 +12,8 @@ let package = Package(
 		),
 		.package(
 			url: "https://github.com/moreSwift/swift-cross-ui",
-			revision: "844085ab10485dbe63ad87effd473ca3124d2e2f"
-		)
+			.upToNextMinor(from: "0.2.1")
+		),
 	],
 	targets: [
 		.executableTarget(
@@ -23,6 +23,6 @@ let package = Package(
 				.product(name: "DefaultBackend", package: "swift-cross-ui"),
 				.product(name: "SwiftBundlerRuntime", package: "swift-bundler"),
 			]
-		)
+		),
 	]
 )
