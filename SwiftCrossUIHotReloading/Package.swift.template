@@ -8,11 +8,11 @@ let package = Package(
 	dependencies: [
 		.package(
 			url: "https://github.com/moreSwift/swift-bundler",
-			revision: "002218e6e310c4f179859710ae98179fec485e04"
+			revision: "5c575a00f34e98e5f136850a433d099337e6d8bb"
 		),
 		.package(
 			url: "https://github.com/moreSwift/swift-cross-ui",
-			.upToNextMinor(from: "0.2.1")
+			.upToNextMinor(from: "0.7.0")
 		),
 	],
 	targets: [
